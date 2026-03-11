@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-lora: "Lora", serif;
+  --font-nunito: "Nunito", sans-serif;
+
+  --color-human-red: #C94040;
+  --color-human-red-light: #E07070;
+  --color-human-red-pale: #FDEAEA;
+  --color-human-red-dark: #A03030;
+  
+  --color-soft-sun: #F9C74F;
+  --color-soft-sun-pale: #FEF3C7;
+  
+  --color-tender-green: #52A87C;
+  --color-tender-green-light: #A8D9C0;
+  --color-tender-green-pale: #EDF7F2;
+  
+  --color-sand: #F5F0E8;
+  --color-charcoal: #2D2D2D;
+  --color-warm-gray: #7A7570;
+  --color-warm-border: #EAE4DC;
+
+  --radius-xl: 18px;
+  --radius-2xl: 28px;
+}
+
+@layer base {
+  body {
+    @apply font-nunito bg-sand text-charcoal antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-lora;
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.08); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.04); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.5s infinite;
+}
+
+.blob-blur {
+  filter: blur(60px);
+}
+
+.sc-line {
+  background: linear-gradient(to bottom, #C94040 0%, transparent 100%);
+}
+
+.markdown-body {
+  @apply text-charcoal leading-relaxed;
+}
+
+.markdown-body h1, .markdown-body h2 {
+  @apply mt-8 mb-4 font-bold;
+}
+
+.markdown-body p {
+  @apply mb-4;
+}
+
+/* Leaflet Fixes */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+}
+

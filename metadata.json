@@ -1,0 +1,7 @@
+{
+  "name": "Association Cœur Humanitaire",
+  "description": "ONG togolaise engagée pour l'amélioration des conditions de vie des femmes, jeunes et enfants au Togo. Ensemble, transformons des vies.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

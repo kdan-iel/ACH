@@ -173,7 +173,7 @@ export const translations: Record<Language, Translation> = {
       badge: "Actif au Togo depuis 2022 · 850+ bénéficiaires",
       title: "Ensemble, transformons",
       titleItalic: "des vies.",
-      description: "L'Association Cœur Humanitaire (ACH) est une association togolaise engagée pour l'amélioration des conditions de vie des femmes, jeunes et enfants au Togo.",
+      description: "L'Association Cœur Humanitaire (ACH) est une organisation à but non lucratif engagée dans l’amélioration des conditions de vie des femmes, des jeunes, des enfants et des populations vulnérables au Togo et en Afrique.",
       ctaPrimary: "❤️ Faire un don",
       ctaSecondary: "Découvrir nos projets →",
       stats: {
@@ -205,8 +205,8 @@ export const translations: Record<Language, Translation> = {
       },
     },
     footer: {
-      description: "Association Cœur Humanitaire (ACH) est une ONG à but non lucratif basée au Togo, dédiée au développement durable et à l'aide humanitaire.",
-      copyright: "© 2025 Association Cœur Humanitaire · Tous droits réservés",
+      description: "Association Cœur Humanitaire (ACH) est une association à but non lucratif basée au Togo, dédiée au développement durable et à l'aide humanitaire.",
+      copyright: "© 2026 Association Cœur Humanitaire · Tous droits réservés",
       navigation: "Navigation",
       contact: "Contact",
       legal: "Mentions légales",
@@ -342,7 +342,7 @@ export const translations: Record<Language, Translation> = {
       badge: "Active in Togo since 2022 · 850+ beneficiaries",
       title: "Together, let's transform",
       titleItalic: "lives.",
-      description: "Association Cœur Humanitaire (ACH) is a Togolese association committed to improving the living conditions of women, youth, and children in Togo.",
+      description: "Association Cœur Humanitaire (ACH) is a non-profit organization committed to improving the living conditions of women, youth, children, and vulnerable populations in Togo and across Africa.",
       ctaPrimary: "❤️ Make a Donation",
       ctaSecondary: "Discover our projects →",
       stats: {

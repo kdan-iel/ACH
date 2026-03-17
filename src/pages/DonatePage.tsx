@@ -11,7 +11,7 @@ export const DonatePage: React.FC = () => {
       <PageHero
         title={t.donation.title}
         description={t.donation.description}
-        image="don7.jpg"
+        image="don7.png"
       />
       
       <div className="pb-24">

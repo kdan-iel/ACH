@@ -36,8 +36,8 @@ const METHODS: Method[] = [
     label: 'Flooz',
     sublabel: 'Moov Money',
     icon: (
-      <div className="h-10 w-10 flex items-center justify-center bg-charcoal rounded-xl text-white text-xs font-black italic tracking-tighter">
-        FLOOZ
+      <div className="h-12 w-12 flex items-center justify-center ">
+        <img src="flooz.png" alt="Flooz" />
       </div>
     ),
     accentClass: 'text-charcoal',
@@ -50,8 +50,8 @@ const METHODS: Method[] = [
     label: 'Mixx',
     sublabel: 'Yas by Togocel',
     icon: (
-      <div className="h-10 w-10 flex items-center justify-center bg-human-red rounded-xl text-white text-xs font-black italic tracking-tighter">
-        MIXX
+      <div className="h-17 w-17 flex items-center  ">
+        <img src="mixx.png" alt="Mixx" />
       </div>
     ),
     accentClass: 'text-human-red',

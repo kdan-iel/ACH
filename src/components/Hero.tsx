@@ -19,67 +19,28 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen pt-20 overflow-hidden flex items-center">
-      {/* Rising Bubbles */}
       <BubblesBackground />
       
-      {/* Background Blobs */}
       <div className="absolute inset-0 -z-10">
         <motion.div
-          animate={{
-            x: [0, 50, -20, 0],
-            y: [0, -30, 40, 0],
-            scale: [1, 1.1, 0.9, 1]
-          }}
+          animate={{ x: [0, 50, -20, 0], y: [0, -30, 40, 0], scale: [1, 1.1, 0.9, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-human-red-light/20 rounded-full blob-blur"
         />
         <motion.div
-          animate={{
-            x: [0, -40, 60, 0],
-            y: [0, 50, -20, 0],
-            scale: [1, 0.9, 1.1, 1]
-          }}
+          animate={{ x: [0, -40, 60, 0], y: [0, 50, -20, 0], scale: [1, 0.9, 1.1, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
           className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-soft-sun/20 rounded-full blob-blur"
         />
         <motion.div
-          animate={{
-            x: [0, 30, -50, 0],
-            y: [0, 40, 20, 0],
-            rotate: [0, 180, 360]
-          }}
+          animate={{ x: [0, 30, -50, 0], y: [0, 40, 20, 0], rotate: [0, 180, 360] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
           className="absolute top-1/2 right-1/3 w-80 h-80 bg-tender-green/20 rounded-full blob-blur"
         />
-        
-        {/* Subtle floating dots/shapes behind text */}
-        <div className="absolute left-10 top-1/3 w-40 h-40 opacity-20 pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ 
-                y: [0, -20, 0],
-                x: [0, 10, 0],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{ duration: 4, delay: i * 0.5, repeat: Infinity }}
-              className="absolute w-1 h-1 bg-human-red rounded-full"
-              style={{ 
-                left: `${Math.random() * 100}%`, 
-                top: `${Math.random() * 100}%` 
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -110,26 +71,17 @@ export const Hero: React.FC = () => {
             />
           </h1>
 
-          <p className="text-xl text-warm-gray mb-10 max-w-lg leading-relaxed">
-            {t.hero.description}
-          </p>
+          <p className="text-xl text-warm-gray mb-10 max-w-lg leading-relaxed">{t.hero.description}</p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              to="/donate"
-              className="bg-human-red text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-human-red-dark hover:-translate-y-1 transition-all duration-200 text-center"
-            >
+            <Link to="/donate" className="bg-human-red text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-human-red-dark hover:-translate-y-1 transition-all duration-200 text-center">
               {t.hero.ctaPrimary}
             </Link>
-            <Link 
-              to="/projects"
-              className="bg-white text-charcoal border-2 border-warm-border px-8 py-4 rounded-full font-bold text-lg hover:bg-sand hover:-translate-y-1 transition-all duration-200 flex items-center justify-center gap-2"
-            >
+            <Link to="/projects" className="bg-white text-charcoal border-2 border-warm-border px-8 py-4 rounded-full font-bold text-lg hover:bg-sand hover:-translate-y-1 transition-all duration-200 flex items-center justify-center gap-2">
               {t.hero.ctaSecondary} <ArrowRight size={20} />
             </Link>
           </div>
 
-          {/* Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16">
             {stats.map((stat, idx) => (
               <motion.div
@@ -154,15 +106,10 @@ export const Hero: React.FC = () => {
             transition={{ duration: 1, delay: 0.4 }}
             className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white"
           >
-            <img
-              src="/men1.jpg"
-              alt="ACH Actions"
-              className="w-full h-auto"
-              referrerPolicy="no-referrer"
-            />
+            <img src="/men1.jpg" alt="ACH Actions" className="w-full h-auto" referrerPolicy="no-referrer" />
           </motion.div>
 
-          {/* Floating Cards */}
+          {/* Floating Card — Citation */}
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -174,18 +121,20 @@ export const Hero: React.FC = () => {
             <p className="text-sm font-bold text-charcoal">"{t.mission.hero.quote}"</p>
           </motion.div>
 
+          {/* Floating Card — Bénévoles */}
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
             className="absolute -bottom-10 -right-6 z-20 bg-tender-green text-white p-6 rounded-2xl shadow-xl max-w-[220px]"
           >
-            <p className="text-2xl font-bold mb-1">12+</p>
-            <p className="text-sm font-semibold opacity-90">{t.projects.hero.villagesLabel}</p>
+            <p className="text-2xl font-bold mb-1">30+</p>
+            <p className="text-sm font-semibold opacity-90">{t.hero.stats.volunteers}</p>
           </motion.div>
 
+          {/* Floating Card — Villages */}
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
             className="absolute -bottom-10 -left-6 z-20 bg-human-red text-white p-6 rounded-2xl shadow-xl max-w-[220px]"
           >
             <p className="text-2xl font-bold mb-1">12+</p>

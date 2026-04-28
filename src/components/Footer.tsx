@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Heart, Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 
@@ -24,20 +24,45 @@ export const Footer: React.FC = () => {
               {t.footer.description}
             </p>
             <div className="flex gap-4">
-              {[
-                { Icon: Facebook, label: 'Facebook' },
-                { Icon: Instagram, label: 'Instagram' },
-                { Icon: Twitter, label: 'Twitter' }
-              ].map(({ Icon, label }, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label={label}
-                  className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
-                >
-                  <Icon size={20} />
-                </a>
-              ))}
+              <a
+                href="https://www.facebook.com/assocoeurhumanitaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
+              >
+                <Facebook size={20} />
+              </a>
+              <a
+                href="https://www.instagram.com/assocoeurhumanitaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="https://www.youtube.com/@assocoeurhumanitaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
+              >
+                <Youtube size={20} />
+              </a>
+              {/* TikTok icon custom SVG */}
+              <a
+                href="https://www.tiktok.com/@assocoeurhumanitaire"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/>
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -49,7 +74,9 @@ export const Footer: React.FC = () => {
               <li><Link to="/mission" className="hover:text-soft-sun transition-colors">{t.nav.mission}</Link></li>
               <li><Link to="/projects" className="hover:text-soft-sun transition-colors">{t.nav.projects}</Link></li>
               <li><Link to="/team" className="hover:text-soft-sun transition-colors">{t.nav.team}</Link></li>
+              <li><Link to="/gallery" className="hover:text-soft-sun transition-colors">{t.nav.gallery}</Link></li>
               <li><Link to="/news" className="hover:text-soft-sun transition-colors">{t.nav.news}</Link></li>
+              <li><Link to="/partners" className="hover:text-soft-sun transition-colors">{t.nav.partners}</Link></li>
               <li><Link to="/contact" className="hover:text-soft-sun transition-colors">{t.nav.contact}</Link></li>
             </ul>
           </div>
@@ -64,11 +91,17 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-human-red shrink-0" size={20} />
-                <span>+228 98212929 - 93494606</span>
+                <a href="tel:+22898212929" className="hover:text-soft-sun transition-colors">+228 98 21 29 29</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="text-human-red shrink-0" size={20} />
+                <a href="tel:+22893494606" className="hover:text-soft-sun transition-colors">+228 93 49 46 06</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-human-red shrink-0" size={20} />
-                <span>assocoeurhumanitaire@gmail.com</span>
+                <a href="mailto:assocoeurhumanitaire@gmail.com" className="hover:text-soft-sun transition-colors break-all">
+                  assocoeurhumanitaire@gmail.com
+                </a>
               </li>
             </ul>
           </div>
@@ -90,11 +123,11 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/10 flex flex-col md:row justify-between items-center gap-6 text-warm-gray text-sm">
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-warm-gray text-sm">
           <p>{t.footer.copyright}</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-            <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.legal}</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.privacy}</a>
           </div>
         </div>
       </div>

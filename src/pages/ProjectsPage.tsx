@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import { ProjectMap } from '../components/ProjectMap';
-import { Droplets, GraduationCap, Users, TreeDeciduous, Filter } from 'lucide-react';
+import { Droplets, GraduationCap, Users, TreeDeciduous, Globe } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
 import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils';
 
 export const ProjectsPage: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const _ = language;
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const categories = [
-    { name: t.projects.categories.water, icon: Droplets, color: 'bg-human-red' },
-    { name: t.projects.categories.education, icon: GraduationCap, color: 'bg-tender-green' },
-    { name: t.projects.categories.women, icon: Users, color: 'bg-soft-sun' },
-    { name: t.projects.categories.environment, icon: TreeDeciduous, color: 'bg-tender-green-light' },
+    { key: 'all', name: t.language === 'fr' ? 'Tous' : 'All', icon: null },
+    { key: 'Eau', name: t.projects.categories.water, icon: Droplets },
+    { key: 'Éducation', name: t.projects.categories.education, icon: GraduationCap },
+    { key: 'Femmes', name: t.projects.categories.women, icon: Users },
+    { key: 'Environnement', name: t.projects.categories.environment, icon: TreeDeciduous },
+    { key: 'Tourisme', name: t.projects.categories.tourism, icon: Globe },
   ];
+
+  const categoryKeyMap: Record<string, string[]> = {
+    'Eau': ['Eau', 'Water'],
+    'Éducation': ['Éducation', 'Education'],
+    'Femmes': ['Femmes', 'Women'],
+    'Environnement': ['Environnement', 'Environment'],
+    'Tourisme': ['Tourisme', 'Tourism'],
+  };
+  const filtered = activeFilter === 'all'
+    ? t.projects.items
+    : t.projects.items.filter(p => {
+        const keys = categoryKeyMap[activeFilter] || [activeFilter];
+        return keys.some(k => p.category === k);
+      });
 
   return (
     <div className="pb-24">
@@ -25,15 +44,21 @@ export const ProjectsPage: React.FC = () => {
       />
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* Categories */}
+        {/* Categories filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-16 -mt-8 relative z-20">
-          <div className="bg-white p-2 rounded-full shadow-xl border border-warm-border flex flex-wrap gap-2">
+          <div className="bg-white p-2 rounded-full shadow-xl border border-warm-border flex flex-wrap gap-2 justify-center">
             {categories.map((cat) => (
               <button
-                key={cat.name}
-                className="flex items-center gap-3 px-6 py-3 rounded-full hover:bg-sand transition-all font-bold text-charcoal"
+                key={cat.key}
+                onClick={() => setActiveFilter(cat.key)}
+                className={cn(
+                  "flex items-center gap-2 px-5 py-3 rounded-full transition-all font-bold text-sm",
+                  activeFilter === cat.key
+                    ? "bg-human-red text-white shadow-md"
+                    : "text-charcoal hover:bg-sand"
+                )}
               >
-                <cat.icon size={20} className="text-human-red" />
+                {cat.icon && <cat.icon size={16} />}
                 {cat.name}
               </button>
             ))}
@@ -55,7 +80,7 @@ export const ProjectsPage: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {filtered.map((project, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -64,43 +89,47 @@ export const ProjectsPage: React.FC = () => {
               transition={{ delay: (i % 3) * 0.1 }}
               className="bg-white rounded-[32px] overflow-hidden shadow-lg border border-warm-border group hover:shadow-2xl transition-all"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-56 overflow-hidden">
                 <img
-                  src={`https://picsum.photos/seed/project-${i}/600/400`}
-                  alt="Project"
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-xs font-black text-human-red uppercase tracking-widest shadow-lg">
-                  {[t.projects.categories.water, t.projects.categories.education, t.projects.categories.women, t.projects.categories.environment][i % 4]}
+                  {project.category}
                 </div>
+                {project.progress === 100 && (
+                  <div className="absolute top-6 right-6 bg-tender-green text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                    ✓ Réalisé
+                  </div>
+                )}
               </div>
-              <div className="p-10">
-                <h3 className="text-2xl font-lora font-bold text-charcoal mb-4 group-hover:text-human-red transition-colors">
-                  {t.projects.categories.water} Project #{i}
+              <div className="p-8">
+                <h3 className="text-xl font-lora font-bold text-charcoal mb-3 group-hover:text-human-red transition-colors leading-tight">
+                  {project.title}
                 </h3>
-                <p className="text-warm-gray text-lg mb-8 line-clamp-2 leading-relaxed">
-                  Amélioration de l'accès aux services de base pour plus de 200 familles dans la région de la Kara.
+                <p className="text-warm-gray text-base mb-6 leading-relaxed line-clamp-2">
+                  {project.description}
                 </p>
                 
-                <div className="space-y-4">
-                  <div className="flex justify-between text-sm font-bold mb-2">
-                    <span className="text-warm-gray">65% {t.projects.grid.funded}</span>
-                    <span className="text-tender-green">1 200 000 F / 2 000 000 F</span>
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm font-bold mb-1">
+                    <span className="text-warm-gray">{project.progress}% {t.projects.grid.funded}</span>
+                    <span className="text-tender-green">{project.raised} F / {project.target} F</span>
                   </div>
                   <div className="w-full h-3 bg-sand rounded-full overflow-hidden">
                     <motion.div 
                       initial={{ width: 0 }}
-                      whileInView={{ width: '65%' }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="h-full bg-tender-green rounded-full" 
+                      whileInView={{ width: `${project.progress}%` }}
+                      transition={{ duration: 1, delay: 0.3 }}
+                      className={cn("h-full rounded-full", project.progress === 100 ? "bg-tender-green" : "bg-gradient-to-r from-human-red to-soft-sun")}
                     />
                   </div>
                 </div>
 
                 <Link 
                   to="/donate"
-                  className="mt-8 w-full bg-human-red text-white py-3 rounded-xl font-bold hover:bg-human-red-dark transition-all flex items-center justify-center gap-2"
+                  className="mt-6 w-full bg-human-red text-white py-3 rounded-xl font-bold hover:bg-human-red-dark transition-all flex items-center justify-center gap-2"
                 >
                   {t.nav.donate}
                 </Link>
@@ -112,4 +141,3 @@ export const ProjectsPage: React.FC = () => {
     </div>
   );
 };
-

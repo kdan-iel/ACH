@@ -126,8 +126,8 @@ export const DonationSection: React.FC = () => {
     const body = encodeURIComponent(
       `Nom : ${form.name}\nTéléphone : ${form.phone}\nEmail : ${form.email}\nMontant : ${form.amount} F CFA\nMoyen de paiement : ${selected?.label}\n\nMessage :\n${form.message}`
     );
-    // Replace with the organisation's actual email address
-    window.location.href = `mailto:contact@organisation.org?subject=${subject}&body=${body}`;
+    // Email ACH
+    window.location.href = `mailto:assocoeurhumanitaire@gmail.com?subject=${subject}&body=${body}`;
     setTimeout(() => {
       setSending(false);
       setSubmitted(true);
@@ -141,8 +141,8 @@ export const DonationSection: React.FC = () => {
     const text = encodeURIComponent(
       `🙏 *Nouveau don*\n\n👤 Nom : ${form.name}\n📞 Tél : ${form.phone}\n📧 Email : ${form.email}\n💰 Montant : ${form.amount} F CFA\n💳 Moyen : ${selected?.label}\n\n💬 ${form.message}`
     );
-    // Replace with the organisation's actual WhatsApp number (international format, no +)
-    window.open(`https://wa.me/22890000000?text=${text}`, '_blank');
+    // WhatsApp ACH
+    window.open(`https://wa.me/22898212929?text=${text}`, '_blank');
     setTimeout(() => {
       setSending(false);
       setSubmitted(true);

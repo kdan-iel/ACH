@@ -7,7 +7,7 @@ export const WhatsAppButton: React.FC = () => {
   const { t } = useLanguage();
 
   const handleClick = () => {
-    const phone = '22890000000'; // Replace with real phone
+    const phone = '22898212929'; // Numéro réel ACH
     const message = encodeURIComponent(t.whatsapp.message);
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
@@ -28,6 +28,7 @@ export const WhatsAppButton: React.FC = () => {
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         whileHover={{ scale: 1.15 }}
         className="w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:brightness-110 transition-all"
+        aria-label="Nous contacter sur WhatsApp"
       >
         <MessageCircle size={32} fill="currentColor" />
       </motion.button>

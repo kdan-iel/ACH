@@ -5,15 +5,15 @@ import { Heart, Linkedin, Mail, Sparkles } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
 import { Link } from 'react-router-dom';
 
+const members = [
+  { name: "AGORO ADEOTHY Adidjatou", role: "Présidente & Fondatrice", bio: "Passionnée par le développement rural et l'éducation, elle est l'initiatrice du slogan 'Du cœur à l'action'.", image: "/madame.jpeg" },
+  { name: "Afiwa Agbo", role: "Directrice des Programmes", bio: "Experte en autonomisation des femmes et micro-finance, elle coordonne les projets sur le terrain.", image: "/team2.jpeg" },
+  { name: "Kodjo Lartey", role: "Responsable Logistique", bio: "Garant du bon déroulement de nos actions sur le terrain, il assure la chaîne d'approvisionnement.", image: "/team4.jpeg" },
+  { name: "Akouvi Lawson", role: "Chargée de Communication", bio: "Donne une voix à nos bénéficiaires et sensibilise nos donateurs à travers les réseaux sociaux.", image: "/team2.jpeg" },
+];
+
 export const TeamPage: React.FC = () => {
   const { t } = useLanguage();
-
-  const members = [
-    { name: "AGORO ADEOTHY Adidjatou", role: "Présidente et Fondatrice", bio: "Passionnée par le développement rural et l'éducation." },
-    { name: "Afiwa Agbo", role: "Directrice des Programmes", bio: "Experte en autonomisation des femmes et micro-finance." },
-    { name: "Kodjo Lartey", role: "Responsable Logistique", bio: "Garant du bon déroulement de nos actions sur le terrain." },
-    { name: "Akouvi Lawson", role: "Chargée de Communication", bio: "Donne une voix à nos bénéficiaires et sensibilise nos donateurs." },
-  ];
 
   return (
     <div className="pb-24">
@@ -37,14 +37,14 @@ export const TeamPage: React.FC = () => {
               <div className="relative w-32 h-32 mx-auto mb-8">
                 <div className="absolute inset-0 bg-human-red rounded-full scale-125 opacity-0 group-hover:opacity-10 transition-all duration-500" />
                 <img
-                  src={`/madame.jpeg`}
+                  src={member.image}
                   alt={member.name}
                   className="w-full h-full rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform"
                 />
               </div>
-              <h3 className="text-2xl font-lora font-bold text-charcoal mb-2">{member.name}</h3>
-              <p className="text-human-red font-black text-sm uppercase tracking-widest mb-6">{member.role}</p>
-              <p className="text-warm-gray text-lg leading-relaxed mb-8">{member.bio}</p>
+              <h3 className="text-xl font-lora font-bold text-charcoal mb-2">{member.name}</h3>
+              <p className="text-human-red font-black text-xs uppercase tracking-widest mb-6">{member.role}</p>
+              <p className="text-warm-gray text-base leading-relaxed mb-8">{member.bio}</p>
               <div className="flex justify-center gap-4">
                 <button title="LinkedIn" className="p-3 bg-sand rounded-2xl text-warm-gray hover:bg-human-red hover:text-white transition-all shadow-sm">
                   <Linkedin size={20} />
@@ -53,6 +53,27 @@ export const TeamPage: React.FC = () => {
                   <Mail size={20} />
                 </button>
               </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats bénévoles */}
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
+          {[
+            { value: "30+", label: "Membres bénévoles actifs", color: "bg-human-red" },
+            { value: "100%", label: "Engagement terrain", color: "bg-tender-green" },
+            { value: "3 ans", label: "D'actions continues", color: "bg-soft-sun" },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-10 rounded-[32px] shadow-lg border border-warm-border text-center"
+            >
+              <p className={`text-5xl font-black mb-3 ${i === 0 ? 'text-human-red' : i === 1 ? 'text-tender-green' : 'text-soft-sun'}`}>{stat.value}</p>
+              <p className="text-warm-gray font-semibold uppercase tracking-widest text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -74,9 +95,7 @@ export const TeamPage: React.FC = () => {
                 {t.team.volunteer.cta}
               </div>
               <h2 className="text-4xl md:text-6xl font-lora font-bold mb-8 leading-tight">{t.team.volunteer.title}</h2>
-              <p className="text-xl opacity-80 mb-12 leading-relaxed max-w-lg">
-                {t.team.volunteer.description}
-              </p>
+              <p className="text-xl opacity-80 mb-12 leading-relaxed max-w-lg">{t.team.volunteer.description}</p>
               <Link 
                 to="/contact"
                 className="bg-human-red text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-human-red-dark transition-all flex items-center gap-3 group/btn w-fit"
@@ -86,22 +105,14 @@ export const TeamPage: React.FC = () => {
               </Link>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white/5 p-8 rounded-[32px] backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-colors">
-                <p className="text-5xl font-black text-soft-sun mb-2">25+</p>
-                <p className="text-sm font-bold opacity-60 uppercase tracking-widest">Bénévoles actifs</p>
+            <div className="bg-white/5 p-10 rounded-[40px] backdrop-blur-xl border border-white/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-20">
+                <Heart size={48} />
               </div>
-              <div className="bg-white/5 p-8 rounded-[32px] backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-colors">
-                <p className="text-5xl font-black text-tender-green mb-2">100%</p>
-                <p className="text-sm font-bold opacity-60 uppercase tracking-widest">Engagement</p>
-              </div>
-              <div className="bg-white/5 p-10 rounded-[40px] backdrop-blur-xl border border-white/10 col-span-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-20">
-                  <Heart size={48} />
-                </div>
-                <p className="text-2xl font-lora italic mb-4 leading-relaxed">"Une expérience qui change la vie et donne un sens à nos actions quotidiennes."</p>
-                <p className="text-sm font-bold text-human-red uppercase tracking-widest">- Marie, bénévole depuis 2023</p>
-              </div>
+              <p className="text-2xl font-lora italic mb-6 leading-relaxed">
+                "Une expérience qui change la vie et donne un sens à nos actions quotidiennes."
+              </p>
+              <p className="text-sm font-bold text-human-red uppercase tracking-widest">— Marie, bénévole depuis 2023</p>
             </div>
           </div>
         </motion.div>
@@ -109,4 +120,3 @@ export const TeamPage: React.FC = () => {
     </div>
   );
 };
-

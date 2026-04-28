@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Heart, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://www.facebook.com/assocoeurhumanitaire"
+                href="https://www.facebook.com/profile.php?id=61573960307408&rdid=Gx6f1NkHCh1ihRIR&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A8CUAMdx5%2F#"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://www.instagram.com/assocoeurhumanitaire"
+                href="https://www.instagram.com/associationcoeurhumanitaire?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -42,15 +42,7 @@ export const Footer: React.FC = () => {
               >
                 <Instagram size={20} />
               </a>
-              <a
-                href="https://www.youtube.com/@assocoeurhumanitaire"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-human-red transition-colors duration-300"
-              >
-                <Youtube size={20} />
-              </a>
+            
               {/* TikTok icon custom SVG */}
               <a
                 href="https://www.tiktok.com/@assocoeurhumanitaire"

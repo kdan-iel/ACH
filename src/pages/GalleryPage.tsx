@@ -116,7 +116,7 @@ export const GalleryPage: React.FC = () => {
             className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4"
             onClick={() => setLightbox(null)}
           >
-            <button
+            <button 
               className="absolute top-6 right-6 text-white bg-white/10 rounded-full p-3 hover:bg-white/20 transition-colors"
               onClick={() => setLightbox(null)}
             >

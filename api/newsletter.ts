@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         email,
-        listIds: [Number(process.env.BREVO_LIST_ID)],
+        listIds: [parseInt(process.env.BREVO_LIST_ID!, 10)],
         updateEnabled: true, // si le contact existe déjà, on l'ajoute juste à la liste
       }),
     });

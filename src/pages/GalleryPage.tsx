@@ -117,6 +117,8 @@ export const GalleryPage: React.FC = () => {
             onClick={() => setLightbox(null)}
           >
             <button 
+              title='type'
+              type="button"
               className="absolute top-6 right-6 text-white bg-white/10 rounded-full p-3 hover:bg-white/20 transition-colors"
               onClick={() => setLightbox(null)}
             >

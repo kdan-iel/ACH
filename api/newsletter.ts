@@ -6,7 +6,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const { email } = req.body;
-
+console.log('LIST ID VALUE:', process.env.BREVO_LIST_ID, 'TYPE:', typeof process.env.BREVO_LIST_ID, 'PARSED:', parseInt(process.env.BREVO_LIST_ID!, 10));
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Email invalide.' });
   }
